@@ -1,12 +1,15 @@
 package com.example.eletric_car_app.ui
 
+import android.os.AsyncTask
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.eletric_car_app.R
+import java.net.HttpURLConnection
 
 class CalculaAutonomiaActivity : AppCompatActivity(){
     lateinit var preco: EditText
@@ -41,5 +44,7 @@ class CalculaAutonomiaActivity : AppCompatActivity(){
         val result = preco/km
         resultado.text = result.toString()
 
+
     }
+
 }

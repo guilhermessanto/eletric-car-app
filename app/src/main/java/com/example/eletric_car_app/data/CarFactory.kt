@@ -23,4 +23,10 @@ object CarFactory {
 
         )
     )
+    //Verbos HTTP
+    // GET -> Para recuperar informações
+    // POST -> Para enviar informaçoes para um servidor
+    // DELETE -> Para deletar algum recurso
+    // PUT -> Alterar uma entidade como um todo
+    // PATCH -> Para alterar um tributo de uma entidade
 }
