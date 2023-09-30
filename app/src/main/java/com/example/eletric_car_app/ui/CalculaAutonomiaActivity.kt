@@ -1,6 +1,5 @@
-package com.example.eletric_car_app.presentation
+package com.example.eletric_car_app.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
