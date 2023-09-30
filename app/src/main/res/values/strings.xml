@@ -7,5 +7,9 @@
     <string name="bateria">Bateria</string>
     <string name="potencia">Potência</string>
     <string name="recarga">Recarga</string>
+    <string name="preco_kwh">Preço Kwh</string>
+    <string name="km_percorrido">Km percorrido</string>
+    <string name="calcular">Calcular</string>
+    <string name="calcular_autonomia">Calcular autonomia</string>
 
 </resources>
