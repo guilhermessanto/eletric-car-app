@@ -11,5 +11,6 @@
     <string name="km_percorrido">Km percorrido</string>
     <string name="calcular">Calcular</string>
     <string name="calcular_autonomia">Calcular autonomia</string>
+    <string name="no_wifi">Internet não disponivel</string>
 
 </resources>
