@@ -13,5 +13,5 @@
     <string name="calcular_autonomia">Calcular autonomia</string>
     <string name="no_wifi">Internet não disponivel</string>
     <string name="response_error">Algo deu errado, por favor tente novamente mais tarde</string>
-
+<string name="saved_calc">saved_calc</string>
 </resources>

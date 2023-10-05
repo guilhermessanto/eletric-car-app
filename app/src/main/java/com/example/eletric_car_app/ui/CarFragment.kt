@@ -1,5 +1,6 @@
 package com.example.eletric_car_app.ui
 
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
@@ -20,6 +21,15 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eletric_car_app.R
 import com.example.eletric_car_app.data.CarsApi
+import com.example.eletric_car_app.data.local.CarRepository
+import com.example.eletric_car_app.data.local.CarrosContract
+import com.example.eletric_car_app.data.local.CarrosContract.CarEntry.COLUMN_NAME_BATERIA
+import com.example.eletric_car_app.data.local.CarrosContract.CarEntry.COLUMN_NAME_POTENCIA
+import com.example.eletric_car_app.data.local.CarrosContract.CarEntry.COLUMN_NAME_PRECO
+import com.example.eletric_car_app.data.local.CarrosContract.CarEntry.COLUMN_NAME_RECARGA
+import com.example.eletric_car_app.data.local.CarrosContract.CarEntry.COLUMN_NAME_URL_PHOTO
+import com.example.eletric_car_app.data.local.CarrosContract.CarEntry.TABLE_NAME
+import com.example.eletric_car_app.data.local.CarsDBHelper
 import com.example.eletric_car_app.domain.Carro
 import com.example.eletric_car_app.ui.Adapter.CarAdapter
 import com.example.eletric_car_app.ui.CalculaAutonomiaActivity
@@ -42,7 +52,7 @@ class CarFragment : Fragment() {
     lateinit var progress: ProgressBar
     lateinit var noInternetImage: ImageView
     lateinit var noInternetText: TextView
-    lateinit var carsApi : CarsApi
+    lateinit var carsApi: CarsApi
 
     var carrosArray: ArrayList<Carro> = ArrayList()
 
@@ -82,14 +92,14 @@ class CarFragment : Fragment() {
     fun getAllCars() {
         carsApi.getAllCars().enqueue(object : Callback<List<Carro>> {
             override fun onResponse(call: Call<List<Carro>>, response: Response<List<Carro>>) {
-                if(response.isSuccessful) {
+                if (response.isSuccessful) {
                     progress.isVisible = false
                     noInternetImage.isVisible = false
                     noInternetText.isVisible = false
                     response.body()?.let {
                         setupList(it)
                     }
-                } else{
+                } else {
                     Toast.makeText(context, R.string.response_error, Toast.LENGTH_LONG).show()
                 }
             }
@@ -122,6 +132,9 @@ class CarFragment : Fragment() {
         listaCarros.apply {
             isVisible = true
             adapter = carroAdapter
+        }
+        carroAdapter.carItemLister = { carro ->
+            val isSaved = CarRepository(requireContext()).saveIfNotExist(carro)
         }
     }
 
@@ -226,7 +239,8 @@ class CarFragment : Fragment() {
                         bateria = bateria,
                         potencia = potencia,
                         recarga = recarga,
-                        urlPhoto = urlPhoto
+                        urlPhoto = urlPhoto,
+                        isFavorite = false
                     )
                     carrosArray.add(model)
                 }
@@ -239,4 +253,5 @@ class CarFragment : Fragment() {
             }
         }
     }
+
 }
