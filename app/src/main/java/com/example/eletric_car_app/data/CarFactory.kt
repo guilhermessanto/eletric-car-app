@@ -10,7 +10,8 @@ object CarFactory {
             bateria = "300 Kwh",
             potencia = "200cv",
             recarga = "30 min",
-            urlPhoto = "www.google.com.br"
+            urlPhoto = "www.google.com.br",
+            isFavorite = false
 
         ),
         Carro(
@@ -19,8 +20,15 @@ object CarFactory {
             bateria = "150 Kwh",
             potencia = "150cv",
             recarga = "20 min",
-            urlPhoto = "www.google.com.br"
+            urlPhoto = "www.google.com.br",
+            isFavorite = false
 
         )
     )
+    //Verbos HTTP
+    // GET -> Para recuperar informações
+    // POST -> Para enviar informaçoes para um servidor
+    // DELETE -> Para deletar algum recurso
+    // PUT -> Alterar uma entidade como um todo
+    // PATCH -> Para alterar um tributo de uma entidade
 }
